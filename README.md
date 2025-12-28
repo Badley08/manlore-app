@@ -1,0 +1,2 @@
+# manlore-app
+APK VERSION OF MANLORE
