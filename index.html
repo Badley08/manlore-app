@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Télécharger ManLore - Application Android</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 25px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+        }
+
+        h1 i {
+            margin-right: 15px;
+        }
+
+        .tagline {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .download-section {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 18px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.3em;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+            margin: 20px 0;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6);
+        }
+
+        .download-icon {
+            margin-right: 10px;
+        }
+
+        .web-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+            margin: 10px;
+        }
+
+        .web-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(79, 172, 254, 0.6);
+        }
+
+        .web-btn i {
+            margin-right: 10px;
+        }
+
+        .skeptical-note {
+            background: rgba(79, 172, 254, 0.2);
+            border: 2px solid #4facfe;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .skeptical-note p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .version-info {
+            margin-top: 15px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .android-only {
+            background: rgba(76, 175, 80, 0.2);
+            border: 2px solid #4caf50;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .android-only i {
+            font-size: 2.5em;
+            color: #4caf50;
+            margin-bottom: 10px;
+        }
+
+        .android-only p {
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+
+        .offline-badge {
+            background: rgba(33, 150, 243, 0.2);
+            border-left: 4px solid #2196f3;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .offline-badge h3 {
+            margin-bottom: 15px;
+            color: #2196f3;
+            font-weight: 700;
+        }
+
+        .offline-badge h3 i {
+            margin-right: 10px;
+        }
+
+        .offline-badge p {
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .security-badge {
+            background: rgba(76, 175, 80, 0.2);
+            border-left: 4px solid #4caf50;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .security-badge h3 {
+            margin-bottom: 15px;
+            color: #4caf50;
+            font-weight: 700;
+        }
+
+        .security-badge h3 i {
+            margin-right: 10px;
+        }
+
+        .security-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .security-item i {
+            color: #4caf50;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .description {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .description h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #ffd700;
+            font-weight: 700;
+        }
+
+        .description h2 i {
+            margin-right: 10px;
+        }
+
+        .description p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            font-weight: 400;
+        }
+
+        .features {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .features h2 {
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            color: #ffd700;
+            font-weight: 700;
+        }
+
+        .features h2 i {
+            margin-right: 10px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+
+        .feature-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .feature-desc {
+            font-size: 0.95em;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .installation {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .installation h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #ffd700;
+            font-weight: 700;
+        }
+
+        .installation h2 i {
+            margin-right: 10px;
+        }
+
+        .installation ol {
+            padding-left: 25px;
+        }
+
+        .installation li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-size: 1.05em;
+            font-weight: 400;
+        }
+
+        .warning {
+            background: rgba(255, 193, 7, 0.2);
+            border-left: 4px solid #ffc107;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .warning i {
+            margin-right: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer p {
+            font-weight: 400;
+        }
+
+        .support-link {
+            display: inline-block;
+            color: #ffd700;
+            text-decoration: none;
+            margin-top: 15px;
+            font-weight: 700;
+            transition: transform 0.3s;
+        }
+
+        .support-link:hover {
+            transform: scale(1.05);
+        }
+
+        .support-link i {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .download-btn {
+                padding: 15px 35px;
+                font-size: 1.1em;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">ML</div>
+            <h1><i class="fa-solid fa-mobile-screen-button"></i> ManLore pour Android</h1>
+            <p class="tagline">Emportez votre collection de BD partout avec vous</p>
+        </div>
+
+        <div class="android-only">
+            <i class="fa-brands fa-android"></i>
+            <p><strong>Application exclusive pour Android</strong></p>
+            <p>Compatible uniquement avec les appareils Android 5.0 et supérieurs</p>
+        </div>
+
+        <div class="download-section">
+            <h2>Télécharger l'application</h2>
+            <a href="APK/manlore.apk" class="download-btn" download>
+                <i class="fa-solid fa-download download-icon"></i>
+                Télécharger ManLore.apk
+            </a>
+            <div class="version-info">
+                Version 1.0 • Taille: 15 MB • Compatible Android 5.0+
+            </div>
+
+            <div class="skeptical-note">
+                <p><strong>Vous êtes sceptique ? Pas de problème !</strong></p>
+                <p>Essayez d'abord la version web avant de télécharger l'application</p>
+                <a href="https://badley08.github.io/ManLore/" class="web-btn" target="_blank">
+                    <i class="fa-solid fa-globe"></i>
+                    Utiliser le site web
+                </a>
+            </div>
+
+            <div class="offline-badge">
+                <h3><i class="fa-solid fa-wifi"></i> Fonctionne hors ligne</h3>
+                <p>
+                    ManLore fonctionne parfaitement <strong>sans connexion internet</strong>. Vous pouvez ajouter, modifier et consulter votre collection même en mode avion.
+                </p>
+                <p>
+                    Dès que la connexion internet est rétablie, toutes vos modifications sont <strong>automatiquement synchronisées avec le cloud</strong>. Vos données restent toujours à jour sur tous vos appareils.
+                </p>
+            </div>
+
+            <div class="security-badge">
+                <h3><i class="fa-solid fa-shield-halved"></i> Application 100% Sûre et Privée</h3>
+                <div class="security-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Aucune publicité intrusive</span>
+                </div>
+                <div class="security-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Aucun traqueur ou collecte de données</span>
+                </div>
+                <div class="security-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Code propre et sécurisé</span>
+                </div>
+                <div class="security-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Aucun contenu dangereux ou malveillant</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="description">
+            <h2><i class="fa-solid fa-book-open"></i> À propos de ManLore</h2>
+            <p>
+                <strong>ManLore</strong> est votre compagnon ultime pour gérer et organiser votre collection de bandes dessinées numériques. Que vous soyez fan de mangas, manhwas, manhuas, webtoons, light novels, webnovels ou webcomics, ManLore vous offre une plateforme complète pour cataloguer, suivre et apprécier vos lectures préférées.
+            </p>
+            <p>
+                Conçue avec une interface moderne et intuitive, l'application reprend toutes les fonctionnalités du site web ManLore dans une expérience mobile optimisée. Gérez votre bibliothèque personnelle en quelques clics, suivez vos progrès de lecture, notez vos titres favoris et ne perdez plus jamais le fil de vos histoires en cours.
+            </p>
+            <p>
+                Avec la <strong>synchronisation cloud automatique</strong>, toutes vos données sont sauvegardées en temps réel. Que vous utilisiez l'application sur votre téléphone, votre tablette ou le site web sur votre ordinateur, vos collections, notes et statistiques restent parfaitement synchronisées. Plus de risque de perdre vos précieuses informations !
+            </p>
+        </div>
+
+        <div class="features">
+            <h2><i class="fa-solid fa-star"></i> Fonctionnalités principales</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-book"></i></div>
+                    <div class="feature-title">Collection complète</div>
+                    <div class="feature-desc">Cataloguez tous vos titres : mangas, manhwas, manhuas, webtoons, light novels et plus encore</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <div class="feature-title">Suivi de progression</div>
+                    <div class="feature-desc">Enregistrez les chapitres lus et suivez votre avancement pour chaque série</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-star"></i></div>
+                    <div class="feature-title">Système de notation</div>
+                    <div class="feature-desc">Notez vos lectures et gardez trace de vos coups de cœur</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-tags"></i></div>
+                    <div class="feature-title">Gestion par statut</div>
+                    <div class="feature-desc">Organisez par statut : en cours, terminé, à lire, abandonné, en pause ou en re-lecture</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-palette"></i></div>
+                    <div class="feature-title">Genres & filtres</div>
+                    <div class="feature-desc">Classez par genres et utilisez des filtres puissants pour retrouver vos titres</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-note-sticky"></i></div>
+                    <div class="feature-title">Notes personnelles</div>
+                    <div class="feature-desc">Ajoutez vos propres notes et commentaires pour chaque titre</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-cloud"></i></div>
+                    <div class="feature-title">Synchronisation cloud</div>
+                    <div class="feature-desc">Toutes vos données sont sauvegardées automatiquement dans le cloud</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                    <div class="feature-title">Statistiques détaillées</div>
+                    <div class="feature-desc">Visualisez vos statistiques de lecture et vos habitudes</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-heart"></i></div>
+                    <div class="feature-title">Liste de souhaits</div>
+                    <div class="feature-desc">Créez une liste des titres que vous souhaitez découvrir</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-database"></i></div>
+                    <div class="feature-title">Import/Export</div>
+                    <div class="feature-desc">Exportez vos données en JSON ou importez une collection existante</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-image"></i></div>
+                    <div class="feature-title">Couvertures visuelles</div>
+                    <div class="feature-desc">Ajoutez des images de couverture par URL ou upload pour chaque titre</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-link"></i></div>
+                    <div class="feature-title">Liens externes</div>
+                    <div class="feature-desc">Enregistrez des liens vers vos sources de lecture préférées</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="installation">
+            <h2><i class="fa-solid fa-gear"></i> Installation</h2>
+            <div class="warning">
+                <strong><i class="fa-solid fa-triangle-exclamation"></i> Important :</strong> ManLore n'est pas disponible sur le Google Play Store. Vous devez autoriser l'installation d'applications provenant de sources inconnues.
+            </div>
+            <ol>
+                <li><strong>Téléchargez</strong> le fichier manlore.apk en cliquant sur le bouton ci-dessus</li>
+                <li><strong>Ouvrez les paramètres</strong> de votre appareil Android</li>
+                <li>Allez dans <strong>Sécurité</strong> ou <strong>Applications</strong></li>
+                <li>Activez l'option <strong>"Sources inconnues"</strong> ou <strong>"Installer des applications inconnues"</strong> pour votre navigateur</li>
+                <li><strong>Localisez</strong> le fichier manlore.apk téléchargé dans vos téléchargements</li>
+                <li><strong>Appuyez</strong> sur le fichier pour lancer l'installation</li>
+                <li><strong>Suivez</strong> les instructions à l'écran pour finaliser l'installation</li>
+                <li><strong>Lancez</strong> ManLore et connectez-vous avec votre compte existant ou créez-en un nouveau</li>
+            </ol>
+            <div class="warning">
+                <strong><i class="fa-solid fa-lightbulb"></i> Astuce :</strong> Une fois l'installation terminée, vous pouvez désactiver l'option "Sources inconnues" pour plus de sécurité.
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 ManLore - Ton Codex Visuel</p>
+            <p>Développé avec passion pour les passionnés de BD</p>
+            <a href="https://ko-fi.com/karlito08" class="support-link" target="_blank">
+                <i class="fa-solid fa-mug-hot"></i> Soutenez le projet sur Ko-fi
+            </a>
+        </div>
+    </div>
+</body>
+</html>
